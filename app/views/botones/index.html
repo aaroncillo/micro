@@ -1,0 +1,19 @@
+<button id="ledButton">Encender LED</button>
+
+<script>
+  const ledButton = document.getElementById("ledButton");
+
+  ledButton.addEventListener("click", () => {
+    fetch("http://192.168.1.82/led", { method: "POST" })
+      .then(response => {
+        if (response.ok) {
+          console.log("LED state changed successfully");
+        } else {
+          console.error("Failed to change LED state");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  });
+</script>
